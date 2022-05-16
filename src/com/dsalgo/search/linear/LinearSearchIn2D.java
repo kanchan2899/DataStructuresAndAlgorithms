@@ -1,4 +1,4 @@
-package com.dsalgo.search;
+package com.dsalgo.search.linear;
 
 import java.util.ArrayList;
 import java.util.Arrays;

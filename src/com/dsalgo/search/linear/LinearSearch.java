@@ -1,4 +1,4 @@
-package com.dsalgo.search;
+package com.dsalgo.search.linear;
 
 public class LinearSearch {
     public static void main(String[] args) {

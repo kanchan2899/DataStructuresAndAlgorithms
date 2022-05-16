@@ -1,4 +1,4 @@
-package com.dsalgo.search;
+package com.dsalgo.search.linear;
 
 // https://leetcode.com/problems/find-numbers-with-even-number-of-digits/
 
