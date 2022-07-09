@@ -12,6 +12,7 @@ public class LinearSearchIn2D {
                 {98, 76, 41, 80}
         };
         System.out.println(Arrays.toString(search(arr, 41)));
+        System.out.println(lSearch(arr, 41));
     }
 
     private static int[] search(int[][] arr, int element) {
@@ -23,5 +24,16 @@ public class LinearSearchIn2D {
             }
         }
         return new int[]{-1, -1};
+    }
+
+    private static boolean lSearch(int[][] arr, int element) {
+        for (int[] innerArray: arr){
+            for (int value: innerArray){
+                if(element == value){
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 }
