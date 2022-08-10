@@ -13,12 +13,15 @@ public class Convert2DArrayTo1D {
     }
 
     public static int[] convert2DArray(int[][] x){
-        int[] y = new int[x.length * x[0].length];
-        int k = 0;
-        for(int i = 0; i < x.length; i++){
-            for(int j = 0; j < x[i].length; j++){
-                y[k] = x[i][j];
-                k++;
+        int n = x.length * x[0].length;
+        int[] y = new int[n];
+        int row = 0;
+        int col = 0;
+        for(int i = 0; i < n; i++){
+            y[i] = x[row][col++];
+            if(col == x[0].length){
+                col = 0;
+                row++;
             }
         }
         return y;

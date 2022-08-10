@@ -1,6 +1,5 @@
 package com.dsalgo.arrays;
 
-import java.sql.SQLOutput;
 import java.util.Arrays;
 
 // https://leetcode.com/problems/flipping-an-image/
