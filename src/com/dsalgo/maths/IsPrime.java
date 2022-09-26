@@ -1,8 +1,8 @@
-package com.dsalgo.simple.programs;
+package com.dsalgo.maths;
 
 import java.util.Scanner;
 
-public class Prime {
+public class IsPrime {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
         System.out.print("Please enter the number: ");
