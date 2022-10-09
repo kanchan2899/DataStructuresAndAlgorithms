@@ -2,10 +2,38 @@ package com.dsalgo.recursion;
 
 public class RotatedBinarySearch {
     public static void main(String[] args) {
-        int[] arr = {3, 1};
+        int[] arr = {2, 1, 2, 2, 2};
         int target = 1;
-        System.out.println(rotatedBinarySearch(arr, target, 0, arr.length - 1));
-        System.out.println(rotatedBinarySearch1(arr, target));
+//        System.out.println(rotatedBinarySearch(arr, target, 0, arr.length - 1));
+//        System.out.println(rotatedBinarySearch1(arr, target));
+        System.out.println(rotatedBinarySearch2(arr, target));
+    }
+
+    private static boolean rotatedBinarySearch2(int[] nums, int target) {
+        int start = 0;
+        int end = nums.length - 1;
+        while(start <= end) {
+            int mid = start + (end - start) / 2;
+            if(nums[mid] == target) {
+                return true;
+            }
+            else if(nums[mid] > nums[start]) {
+                if(target >= nums[start] && target < nums[mid]) {
+                    end = mid - 1;
+                } else {
+                    start = mid + 1;
+                }
+            } else if (nums[mid] < nums[start]) {
+                if(target > nums[mid] && target <= nums[end]) {
+                    start = mid + 1;
+                } else {
+                    end = mid - 1;
+                }
+            } else {
+                start += 1;
+            }
+        }
+        return false;
     }
 
     private static int rotatedBinarySearch1(int[] nums, int target) {
@@ -17,7 +45,7 @@ public class RotatedBinarySearch {
                     return mid;
                 }
                 if(nums[mid] >= nums[start]) {
-                    if(target >= nums[start] && target <= nums[mid]) {
+                    if((target >= nums[start] && target <= nums[mid])) {
                         end = mid - 1;
                     } else {
                         start = mid + 1;
