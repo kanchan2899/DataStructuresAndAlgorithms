@@ -42,4 +42,5 @@ public class FindTheDuplicateNumber {
         nums[i] = nums[j];
         nums[j] = temp;
     }
+
 }
