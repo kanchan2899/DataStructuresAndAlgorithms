@@ -2,6 +2,7 @@ package com.dsalgo.arrays;
 
 import java.util.Arrays;
 
+// https://leetcode.com/problems/shuffle-the-array/
 public class ShuffleTheArray {
     public static void main(String[] args) {
         int[] nums = {2, 5, 1, 3, 4, 7};

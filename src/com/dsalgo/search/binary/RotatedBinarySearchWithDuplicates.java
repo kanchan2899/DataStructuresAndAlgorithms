@@ -3,7 +3,7 @@ package com.dsalgo.search.binary;
 public class RotatedBinarySearchWithDuplicates {
     public static void main(String[] args) {
         int[] arr = {6, 8, 8, 8, 9, 9, 10, 10, 10, 10, 11, 12, 12, 12, 12, 12, 12, 6, 6, 6};
-        System.out.println(pivotBinarySearch(arr, 15));
+        System.out.println(pivotBinarySearch(arr, 12));
     }
 
     static int pivotBinarySearch(int[] nums, int target){

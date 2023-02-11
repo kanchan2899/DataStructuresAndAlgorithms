@@ -2,6 +2,7 @@ package com.dsalgo.search.binary;
 
 import java.util.Arrays;
 
+// https://leetcode.com/problems/search-a-2d-matrix/
 public class BinarySearchIn2DArray {
     public static void main(String[] args) {
         int[][] arr = {
@@ -10,7 +11,7 @@ public class BinarySearchIn2DArray {
                 {28, 29, 37, 49, 52},
                 {33, 34, 38, 50, 55}
         };
-        System.out.println(Arrays.toString(search(arr, 55)));
+        System.out.println(Arrays.toString(search(arr, 34)));
     }
 
     static int[] search(int[][] matrix, int target){

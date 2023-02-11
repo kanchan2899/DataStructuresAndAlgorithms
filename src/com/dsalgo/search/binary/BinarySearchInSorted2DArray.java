@@ -2,14 +2,12 @@ package com.dsalgo.search.binary;
 
 import java.util.Arrays;
 
+// https://leetcode.com/problems/search-a-2d-matrix-ii/
 public class BinarySearchInSorted2DArray {
     public static void main(String[] args) {
-        int[][] arr = {
-                {1, 2, 3, 4},
-                {5, 6, 7, 8},
-                {9, 10, 11, 12}
-        };
-        System.out.println(Arrays.toString(search(arr, 11)));
+        int[][] arr = {{1,4,7,11,15},{2,5,8,12,19},{3,6,9,16,22},{10,13,14,17,24},{18,21,23,26,30}};
+//        System.out.println(Arrays.toString(search(arr, 2)));
+        System.out.println(searchIn2DMatrixSortedInAscendingOrderRowColwise(arr, 30));
     }
 
     // Search in a specific row with column start and end indexes
@@ -79,5 +77,21 @@ public class BinarySearchInSorted2DArray {
         else {
             return binarySearch(matrix, rowStart + 1, colMid + 1, cols - 1, target);
         }
+    }
+
+    static boolean searchIn2DMatrixSortedInAscendingOrderRowColwise(int[][] arr, int target){
+        int row = 0;
+        int col = arr[0].length - 1;
+
+        while (row < arr.length && col >= 0) {
+            if(target == arr[row][col]) {
+                return true;
+            }
+            if(target < arr[row][col])
+                col--;
+            else
+                row++;
+        }
+        return false;
     }
 }

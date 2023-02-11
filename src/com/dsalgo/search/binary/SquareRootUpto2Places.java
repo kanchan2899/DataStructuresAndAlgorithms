@@ -20,8 +20,10 @@ public class SquareRootUpto2Places {
             }
             if(m * m > n) {
                 e = m - 1;
-            } else
+            } else {
                 s = m + 1;
+                root = m;
+            }
         }
         double increment = 0.1;
         for(int i = 0; i < p; i++){
