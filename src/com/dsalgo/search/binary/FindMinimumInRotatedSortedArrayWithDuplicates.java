@@ -1,5 +1,8 @@
 package com.dsalgo.search.binary;
 
+import com.annotations.ProgramMarkers;
+
+@ProgramMarkers(programType = "2D Binary Search")
 public class FindMinimumInRotatedSortedArrayWithDuplicates {
     public static void main(String[] args) {
         int[][] arr = {
