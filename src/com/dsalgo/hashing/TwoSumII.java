@@ -1,4 +1,4 @@
-package com.dsalgo.search.binary;
+package com.dsalgo.hashing;
 
 import java.util.Arrays;
 import java.util.HashMap;

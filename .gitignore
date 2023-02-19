@@ -2,3 +2,10 @@
 out/
 DataStructuresAndAlgorithms.iml
 .DS_Store
+*.html
+*.js
+*.zip
+*.css
+element-list
+script-dir/images/*
+resources/*
