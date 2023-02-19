@@ -1,4 +1,4 @@
-package com.dsalgo.arrays;
+package com.dsalgo.hashing;
 
 import java.util.*;
 
