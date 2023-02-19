@@ -1,15 +1,18 @@
 package com.dsalgo.hashing;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 
 public class SubarrayWithGivenSum {
     public static void main(String[] args) {
-        int[][] arr = {{5, 8, 6, 13, 3, -1}, {15, 2, 8, 10, -5, -8, 6}, {3, 2, 5, 6}};
-        int[] sum = {22, 3, 10};
+        int[][] arr = {{5, 8, 6, 13, 3, -1}, {15, 2, 8, 10, -5, -8, 6}, {3, 2, 5, 6}, {3, 2, 1}};
+        int[] sum = {22, 3, 10, 9};
 
         for(int i = 0; i < arr.length; i++) {
             System.out.println("Using Bruteforce: " + subarrayWithGivenSum1(arr[i], sum[i]));
             System.out.println("Using HashSet: " + subarrayWithGivenSum2(arr[i], sum[i]));
+            System.out.println("Using HashMap, return indexes: " + subarrayWithGivenSum3(arr[i], sum[i]));
             System.out.println("************************");
         }
     }
@@ -54,7 +57,6 @@ public class SubarrayWithGivenSum {
      */
     private static boolean subarrayWithGivenSum2(int[] arr, int sum) {
         HashSet<Integer> hashSet = new HashSet<>();
-        hashSet.add(0);
         int prefix_sum = 0;
         for(int i : arr) {
             prefix_sum += i;
@@ -65,5 +67,29 @@ public class SubarrayWithGivenSum {
             hashSet.add(prefix_sum);
         }
         return false;
+    }
+
+    private static ArrayList<Integer> subarrayWithGivenSum3(int[] arr, int sum) {
+        HashMap<Integer, Integer> hashMap = new HashMap<>();
+        ArrayList<Integer> indexes = new ArrayList<>(2);
+
+        int prefix_sum = 0;
+        for(int i = 0; i < arr.length; i++) {
+            prefix_sum += arr[i];
+            if(prefix_sum == sum) {
+                indexes.add(0);
+                indexes.add(i);
+                return indexes;
+            }
+            if(hashMap.containsKey(prefix_sum - sum)) {
+                indexes.add(hashMap.get(prefix_sum - sum) + 1);
+                indexes.add(i);
+                return indexes;
+            }
+            hashMap.put(prefix_sum, i);
+        }
+        indexes.add(-1);
+        indexes.add(-1);
+        return indexes;
     }
 }
