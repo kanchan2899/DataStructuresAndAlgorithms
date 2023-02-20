@@ -78,7 +78,7 @@ public class LongestConsecutiveSubsequence {
      * and currentConsecutiveSequenceLength.
      * Return longestConsecutiveSequenceLength
      *
-     * Number of lookups is always 2n.
+     * Number of lookups is always 2n, where n is the size of the hashtable.
      * Example-1: set = {1, 3, 4, 2}
      * x = 1 => curr = 1, curr = 2, curr = 3, curr = 4 ------> 5 lookups (1 for x-1 and 4 for x+curr)
      * x = 3 => ---------> 1 (1 for x-1)
