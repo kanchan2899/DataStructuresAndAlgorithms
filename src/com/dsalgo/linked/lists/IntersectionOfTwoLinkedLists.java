@@ -11,20 +11,22 @@ package com.dsalgo.linked.lists;
 
  */
 
-public class IntersectionOfTwoLinkedLists {
+import com.dsalgo.linked.lists.singly.LinkedList;
+
+public class IntersectionOfTwoLinkedLists extends LinkedList {
     public static void main(String[] args) {
         LinkedList list1 = new LinkedList();
-        list1.insert(1);
-        list1.insert(2);
+        list1.insertFirst(1);
+        list1.insertFirst(2);
 
         LinkedList list2 = new LinkedList();
-        list2.insert(2);
-        list2.insert(3);
-        list2.insert(4);
+        list2.insertFirst(2);
+        list2.insertFirst(3);
+        list2.insertFirst(4);
 
         System.out.print("Using Bruteforce: ");
-        getIntersection1(list1, list2).print();
-        System.out.println();
+        LinkedList intersection = getIntersection1(list1, list2);
+        intersection.display();
     }
 
     /**
@@ -35,13 +37,13 @@ public class IntersectionOfTwoLinkedLists {
      * Time complexity: O(m * n)
      * Space complexity: O(min(m, n))
      */
-    public static LinkedList getIntersection1(LinkedList head1, LinkedList head2){
-        LinkedList intersection = new LinkedList(), pointer2 = head2;
-        while(pointer2.head != null) {
-            if(head1.is_present(pointer2.head.data)){
-                intersection.insert(pointer2.head.data);
+    public static LinkedList getIntersection1(LinkedList list1, LinkedList list2){
+        LinkedList intersection = new LinkedList(), pointer2 = list2;
+        while(pointer2.getHead() != null) {
+            if(list1.getHead() != null && list1.find(pointer2.getVal()) != null){
+                intersection.insertFirst(pointer2.getVal());
             }
-            pointer2.head = pointer2.head.next;
+            pointer2.head = pointer2.getNext();
         }
         return intersection;
     }
