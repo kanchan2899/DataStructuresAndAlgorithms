@@ -21,6 +21,20 @@ public class LinkedList {
         return head;
     }
 
+    public void insertUsingRecursion(int val, int index) {
+        head = insertUsingRecursion(val, index, head);
+    }
+
+    private Node insertUsingRecursion(int val, int index, Node node) {
+        if(index == 1) {
+            Node temp = new Node(val, node);
+            size++;
+            return temp;
+        }
+        node.next = insertUsingRecursion(val, --index, node.next);
+        return node;
+    }
+
     public void insertFirst(int val) {
         Node new_node = new Node(val);
         new_node.next = head;
@@ -130,6 +144,79 @@ public class LinkedList {
             temp = temp.next;
         }
         System.out.println("null");
+    }
+
+    /*  https://leetcode.com/problems/remove-duplicates-from-sorted-list/
+     *  I/P: head = [1, 1, 2]
+     *  O/P: [1, 2]
+     *
+     *  I/P: head = [1, 1, 2, 3, 3, 3]
+     *  O/P: [1, 2, 3]
+     *
+     */
+    public void removeDuplicatesInSortedList() {
+        Node temp = head;
+        if(temp == null || temp.next == null) {
+            return;
+        }
+        while (temp != null && temp.next != null) {
+            if(temp.val == temp.next.val) {
+                temp.next = temp.next.next;
+            } else {
+                temp = temp.next;
+            }
+        }
+    }
+
+    /*
+        https://leetcode.com/problems/merge-two-sorted-lists/
+
+        I/P: list1 = [1, 2, 4] and list2 = [1, 3, 4]
+        O/P: [1, 1, 2, 3, 4, 4]
+
+     */
+    public LinkedList mergeTwoSortedLinkedLists(LinkedList l2) {
+        LinkedList merged = new LinkedList();
+        Node head1 = head, head2 = l2.head;
+        while (head1 != null && head2 != null) {
+            if(head1.val < head2.val) {
+                merged.insertLast(head1.val);
+                head1 = head1.next;
+            } else {
+                merged.insertLast(head2.val);
+                head2 = head2.next;
+            }
+        }
+
+        while (head1 != null) {
+            merged.insertLast(head1.val);
+            head1 = head1.next;
+        }
+        while (head2 != null) {
+            merged.insertLast(head2.val);
+            head2 = head2.next;
+        }
+
+        return merged;
+    }
+
+    /*
+        https://leetcode.com/problems/linked-list-cycle/
+        I/P: head = [3, 2, 0, -4], pos = 1 (-4's next is 2)
+        Internally, pos is used to denote the index of the node that tail's next pointer is
+        connected to. Note that pos is not passed as a parameter.
+        O/P: true
+     */
+    public boolean detectCycle() {
+        Node slow = head, fast = head;
+        while (fast != null && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+            if(slow == fast) {
+                return true;
+            }
+        }
+        return false;
     }
 
     protected class Node {
