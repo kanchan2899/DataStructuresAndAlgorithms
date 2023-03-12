@@ -1,6 +1,7 @@
 package com.dsalgo.hashing;
 
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -23,6 +24,7 @@ public class TwoSumI {
             System.out.println("Using Bruteforce: " + Arrays.toString(getSumPair1(arr[i], sum[i])));
             System.out.println("Using HashSet: " + getSumPair2(arr[i], sum[i]));
             System.out.println("Using HashMap: " + Arrays.toString(getSumPair3(arr[i], sum[i])));
+            System.out.println("Using Two Pointers: " + Arrays.toString(getSumPair4(arr[i], sum[i])));
             System.out.println("*****************");
         }
     }
@@ -90,6 +92,39 @@ public class TwoSumI {
                 return new int[]{i, hashMap.get(sum - a[i])};
             }
             hashMap.put(a[i], i);
+        }
+        return new int[]{-1, -1};
+    }
+
+    /**
+     * Using two-pointers approach: Sort the array. Initialize two pointers, start = 0, end = a.length - 1
+     * Start a loop till start > end, check if the sum of elements at two pointers == sum.
+     * If so, return the elements. If sum of elements at two pointers > sum, end--
+     * Else, do start++. If no pair is found return, {-1, -1}
+     *
+     * NOTE: This solution modifies the array so indexes won't be the ideal way to deal with this
+     * problem. Hence, return the elements.
+     *
+     * Time complexity: O(n * log n)
+     * Space complexity: O(1)
+     *
+     * @param a
+     * @param sum
+     * @return
+     */
+    private static int[] getSumPair4(int[] a, int sum) {
+        Arrays.sort(a);
+        int start = 0;
+        int end = a.length - 1;
+        while (start < end) {
+            int s = a[start] + a[end];
+            if(s == sum){
+                return new int[]{a[start], a[end]};
+            } else if (s > sum) {
+                end--;
+            } else {
+                start++;
+            }
         }
         return new int[]{-1, -1};
     }
