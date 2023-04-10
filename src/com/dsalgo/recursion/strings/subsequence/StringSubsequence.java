@@ -9,6 +9,18 @@ public class StringSubsequence {
         String str = "abc";
         findSequence(str, "");
         System.out.println(findSequence1(str, ""));
+        System.out.println(findSequence3(str, "", new ArrayList<String>()));
+    }
+
+    private static ArrayList<String> findSequence3(String unprocessed, String processed, ArrayList<String> list) {
+        if(unprocessed.isEmpty()){
+            list.add(processed);
+            return list;
+        }
+        char ch = unprocessed.charAt(0);
+        findSequence3(unprocessed.substring(1), processed + ch, list);
+        findSequence3(unprocessed.substring(1), processed, list);
+        return list;
     }
 
     private static ArrayList<String> findSequence1(String str, String sub) {

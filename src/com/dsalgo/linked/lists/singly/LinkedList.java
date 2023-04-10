@@ -219,6 +219,207 @@ public class LinkedList {
         return false;
     }
 
+
+    /*
+        https://www.geeksforgeeks.org/find-length-of-loop-in-linked-list/
+        I/P: head = [3, 2, 0, -4], pos = 1 (-4's next is 2)
+        O/P: 3
+     */
+    public int cycleLength() {
+        Node slow = head, fast = head;
+        int len = 0;
+        while(fast != null && fast.next != null) {
+            fast = fast.next.next;
+            slow = slow.next;
+            if(fast == slow) {
+                Node temp = slow;
+                do {
+                    len++;
+                    temp = temp.next;
+                } while (temp != fast);
+            }
+        }
+        return len;
+    }
+
+    /*
+        https://leetcode.com/problems/linked-list-cycle-ii/
+        I/P: head = [3, 2, 0, -4], pos = 1 (-4's next is 2)
+        O/P: tail connects to node index 1 (where the cycle is starting)
+
+        Algo:
+        1. Find the length of the cycle
+        2. Move s ahead by length of the cycle times
+        3. Move s and f one by one, it will meet at start of the cycle.
+     */
+    public int findStartOfCycle() {
+        // Find cycle length
+        int len = 0;
+        Node fast = head, slow = head;
+        while (fast != null && fast.next != null) {
+            fast = fast.next.next;
+            slow = slow.next;
+            if(fast == slow) {
+                len = cycleLength();
+                break;
+            }
+        }
+
+        Node first = head, second = head;
+        if(len == 0) return -1;
+
+        // Move second ahead by length of cycle times
+        while (len > 0) {
+            second = second.next;
+            len--;
+        }
+
+        // Move first and second forward until they are equal
+        while (first != second) {
+            first = first.next;
+            second = second.next;
+        }
+        return second.val;
+    }
+
+    /*
+        https://leetcode.com/problems/middle-of-the-linked-list/
+        Input: head = [1,2,3,4,5]
+        Output: [3,4,5]
+
+     */
+    public int middleNode() {
+        Node slow = head, fast = head;
+        while (fast != null && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+        return slow.val;    // return slow;
+    }
+
+    /*
+        https://leetcode.com/problems/rotate-list/
+        I/P: head = [1,2,3,4,5], k = 2
+        O/P: [4,5,1,2,3]
+     */
+    public void rotateList1(int k) {
+        Node temp = head, prev = null;
+        if(temp == null) return;
+        while(k > 0) {
+            while (temp != null && temp.next != null) {
+                prev = temp;
+                temp = temp.next;
+            }
+            prev.next = null;
+            temp.next = head;
+            head = temp;
+            k--;
+        }
+    }
+
+    public void rotateList2(int k) {
+        Node temp = head, x = head, y = head;
+        if(temp == null || temp.next == null) return;
+
+        int len = 0;
+        while (x != null) {
+            y = x;
+            len++;
+            x = x.next;
+        }
+        int steps = len - k % len;
+        while (steps > 1) {
+            temp = temp.next;
+            steps--;
+        }
+        y.next = head;
+        head = temp.next;
+        temp.next = null;
+    }
+
+    /*
+        https://leetcode.com/problems/partition-list/
+
+
+     */
+    public Node partition(int x) {
+        Node l1 = new Node(-1, null), list1 = l1;
+        Node l2 = new Node(-1, null), list2 = l2;
+        Node temp = head;
+        while(temp != null) {
+            if (temp.val < x) {
+                list1.next = temp;
+                list1 = list1.next;
+            } else {
+                list2.next = temp;
+                list2 = list2.next;
+            }
+            temp = temp.next;
+        }
+        list2.next = null;
+        list1.next = l2.next;
+        return l1.next;
+    }
+
+
+    public void reverseBetween(int left, int right) {
+        int x = 0;
+        Node prev = null, temp1 = head, temp2 = null;
+        Node reverse = null;
+        while(x < left - 1) {
+            prev = temp1;
+            temp1 = temp1.next;
+            x++;
+        }
+        temp2 = prev.next;
+        while (x < right) {
+            Node next = temp1.next;
+            temp1.next = reverse;
+            reverse = temp1;
+            temp1 = next;
+            x++;
+        }
+        temp2.next = temp1;
+        prev.next = reverse;
+    }
+
+
+    public void reorderList() {
+        Node p1 = head, p2 = head;
+
+        // Find the mid of LL
+        while(p2.next != null && p2.next.next != null) {
+            p1 = p1.next;
+            p2 = p2.next.next;
+        }
+
+        // Reverse second half of the list
+        Node mid = p1;
+        Node current = p1.next;
+
+        while (current.next != null) {
+            Node next = current.next;
+            current.next = next.next;
+            next.next = mid.next;
+            mid.next = next;
+        }
+
+        // Reorder one by one
+        p1 = head;
+        p2 = mid.next;
+
+        while (p1 != mid) {
+            mid.next = p2.next;
+            p2.next = p1.next;
+            p1.next = p2;
+            p1 = p2.next;
+            p2 = mid.next;
+        }
+    }
+
+
+
+
     protected class Node {
         private int val;
         private Node next;
