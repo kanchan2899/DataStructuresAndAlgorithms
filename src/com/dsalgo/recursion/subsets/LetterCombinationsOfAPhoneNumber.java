@@ -1,52 +1,53 @@
 package com.dsalgo.recursion.subsets;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
-// https://leetcode.com/problems/letter-combinations-of-a-phone-number/
+// https://leetcode.com/problems/letter-combinations-of-a-phone-number/description/
 public class LetterCombinationsOfAPhoneNumber {
     public static void main(String[] args) {
-        numberPadToLetters("123", "");
-        System.out.println(numberPadToLettersInList("122", ""));
-        System.out.println(countNumberPadToLetters("123", ""));
+        String digits = "23";
+        System.out.println(letterCombinations(digits));
     }
 
-    private static int countNumberPadToLetters(String unprocessed, String processed) {
-        if(unprocessed.isEmpty()) {
-            return 1;
-        }
-        int count = 0;
-        int digit = unprocessed.charAt(0) - '0';
-        for(int i = (digit - 1) * 3; i < digit * 3; i++) {
-            char c = (char) ('a' + i);
-            count += countNumberPadToLetters(unprocessed.substring(1), processed + c);
-        }
-        return count;
+    private static List<String> letterCombinations(String digits) {
+        List<String> result = new ArrayList<>();
+        if(digits == null || digits.length() == 0)
+            return result;
+
+        Map<Character, String> characterStringMapmap = new HashMap<>();
+        characterStringMapmap.put('2', "abc");
+        characterStringMapmap.put('3', "def");
+        characterStringMapmap.put('4', "ghi");
+        characterStringMapmap.put('5', "jkl");
+        characterStringMapmap.put('6', "mno");
+        characterStringMapmap.put('7', "pqrs");
+        characterStringMapmap.put('8', "tuv");
+        characterStringMapmap.put('9', "wxyz");
+
+        result = helper(digits, "", characterStringMapmap);
+
+        return result;
     }
 
-    static void numberPadToLetters(String unprocessed, String processed){
-        if(unprocessed.isEmpty()) {
-            System.out.println(processed);
-            return;
-        }
-        int digit = unprocessed.charAt(0) - '0'; // This wil convert '2' to 2
-        for(int i = (digit - 1) * 3; i < digit * 3; i++) {
-            char ch = (char) ('a' + i);
-            numberPadToLetters(unprocessed.substring(1), processed + ch);
-        }
-    }
+    private static List<String> helper(String digits,
+                                       String processed,
+                                       Map<Character, String> characterStringMapmap) {
 
-    static ArrayList<String> numberPadToLettersInList(String unprocessed, String processed) {
-        if(unprocessed.isEmpty()) {
-            ArrayList<String> list = new ArrayList<>();
+        if(digits.isEmpty()) {
+            List<String> list = new ArrayList<>();
             list.add(processed);
             return list;
         }
-        int digit = unprocessed.charAt(0) - '0';
-        ArrayList<String> ls = new ArrayList<>();
-        for(int i = (digit - 1) * 3; i < digit * 3; i++) {
-            char c = (char) ('a' + i);
-            ls.addAll(numberPadToLettersInList(unprocessed.substring(1), processed + c));
+        char digit = digits.charAt(0);
+        List<String> res = new ArrayList<>();
+        String str = characterStringMapmap.get(digit);
+        for(int i = 0; i < str.length(); i++) {
+            char c = str.charAt(i);
+            res.addAll(helper(digits.substring(1), processed + c, characterStringMapmap));
         }
-        return ls;
+        return res;
     }
 }

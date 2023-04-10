@@ -9,6 +9,17 @@ public class TestLinkedList {
         System.out.println("********************************************************************");
         mergeTwoSortedLL();
         System.out.println("********************************************************************");
+        middleOfLL();
+        System.out.println("********************************************************************");
+        rotateLL1();
+        System.out.println("********************************************************************");
+        rotateLL2();
+        System.out.println("********************************************************************");
+        partitionList();
+        System.out.println("********************************************************************");
+        reverseBetween();
+        System.out.println("********************************************************************");
+        reorderList();
     }
 
     private static void crudOperationsLL() {
@@ -87,6 +98,100 @@ public class TestLinkedList {
         LinkedList merged = ll1.mergeTwoSortedLinkedLists(ll2);
         System.out.print("Merged sorted LL ======= ");
         merged.display();
+    }
+
+    private static void middleOfLL() {
+        System.out.println("{{ MIDDLE OF A LINKED LISTS }}");
+        LinkedList ll1 = new LinkedList();
+        ll1.insertFirst(7);
+        ll1.insertFirst(4);
+        ll1.insertFirst(5);
+        ll1.insertFirst(6);
+        ll1.insertFirst(3);
+        System.out.print("LL is =========== ");
+        ll1.display();
+        System.out.println("Mid node of linked list is " + ll1.middleNode());
+    }
+
+    private static void rotateLL1() {
+        System.out.println("{{ ROTATE THE LINKED LISTS BY K STEPS}}");
+
+        LinkedList ll1 = new LinkedList();
+        ll1.insertFirst(1);
+        ll1.insertFirst(2);
+        ll1.insertFirst(3);
+        ll1.insertFirst(4);
+        ll1.insertFirst(5);
+        System.out.print("LL is =========== ");
+        ll1.display();
+        ll1.rotateList1(2);
+        System.out.print("Rotated LL is  ======= ");
+        ll1.display();
+    }
+
+
+    private static void rotateLL2() {
+        System.out.println("{{ ROTATE THE LINKED LISTS BY K STEPS}}");
+
+        LinkedList ll1 = new LinkedList();
+        ll1.insertFirst(1);
+        ll1.insertFirst(2);
+        ll1.insertFirst(3);
+        ll1.insertFirst(4);
+        ll1.insertFirst(5);
+        System.out.print("LL is =========== ");
+        ll1.display();
+        ll1.rotateList2(2);
+        System.out.print("Rotated LL is  ======= ");
+        ll1.display();
+    }
+
+    private static void partitionList() {
+
+        System.out.println("{{ PARTITION LIST }}");
+
+        LinkedList ll1 = new LinkedList();
+        ll1.insertFirst(1);
+        ll1.insertFirst(4);
+        ll1.insertFirst(3);
+        ll1.insertFirst(2);
+        ll1.insertFirst(5);
+        ll1.insertFirst(2);
+        System.out.print("LL is =========== ");
+        ll1.display();
+        ll1.partition(3);
+        System.out.print("Rotated LL is  ======= ");
+        ll1.display();
+    }
+
+    private static void reverseBetween() {
+        LinkedList ll1 = new LinkedList();
+        ll1.insertFirst(1);
+        ll1.insertFirst(4);
+        ll1.insertFirst(3);
+        ll1.insertFirst(2);
+        ll1.insertFirst(5);
+        ll1.insertFirst(2);
+        System.out.print("LL is =========== ");
+        ll1.display();
+        ll1.reverseBetween(2, 5);
+        System.out.print("Rotated LL is  ======= ");
+        ll1.display();
+    }
+
+    private static void reorderList() {
+        LinkedList ll1 = new LinkedList();
+        ll1.insertFirst(1);
+        ll1.insertFirst(2);
+        ll1.insertFirst(3);
+        ll1.insertFirst(4);
+        ll1.insertFirst(5);
+        ll1.insertFirst(6);
+        System.out.print("LL is =========== ");
+        ll1.display();
+        ll1.reorderList();
+        System.out.print("Reordered LL is  ======= ");
+        ll1.display();
     }
 
 }

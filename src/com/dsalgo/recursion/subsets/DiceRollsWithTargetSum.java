@@ -6,9 +6,10 @@ import java.util.List;
 // https://leetcode.com/problems/number-of-dice-rolls-with-target-sum/
 public class DiceRollsWithTargetSum {
     public static void main(String[] args) {
-//        diceRolls("", 4);
-//        System.out.println(diceRollsInList("", 5));
+        diceRolls("", 4);
+        System.out.println(diceRollsInList("", 5));
         System.out.println(diceRollsCount(2, 6, 7));
+        diceFace("", 6, 5);
     }
 
     static void diceRolls(String processed, int target) {
@@ -47,5 +48,15 @@ public class DiceRollsWithTargetSum {
             list.addAll(diceRollsInList(processed + i, target - i));
         }
         return list;
+    }
+
+    static void diceFace(String p, int target, int face) {
+        if(target == 0) {
+            System.out.print(p + " ");
+            return;
+        }
+        for(int i = 1; i <= face && i <= target; i++) {
+            diceFace(p+i, target - i, face);
+        }
     }
 }
