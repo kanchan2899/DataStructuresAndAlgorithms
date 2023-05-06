@@ -6,11 +6,11 @@ public class EvenOrOdd {
     public static void main(String[] args) {
         int[] n = {9, 100, 16, 15, 14, 18, 205};
         for(int a : n){
-            System.out.println(evenOrOdd(a));
+            System.out.println(isOdd(a));
         }
     }
 
-    private static boolean evenOrOdd(int a) {
+    private static boolean isOdd(int a) {
         return (a & 1) == 0;
     }
 }

@@ -1,13 +1,11 @@
 package com.dsalgo.stacks;
 
-import java.util.ArrayDeque;
-import java.util.Deque;
-import java.util.Stack;
+import java.util.*;
 
 // https://www.geeksforgeeks.org/check-for-balanced-parentheses-in-an-expression/
 public class BalancedParenthesis {
     public static void main(String[] args) {
-        String[] expressions = {"([{}])", "([{}}])", "([{}]))()[]", "([{}])["};
+        String[] expressions = {"([{}])", "([{}}])", "([{}]))()[]", "([{}])[", "{{}}", "[{}]"};
         for (String expr : expressions) {
             System.out.println(areBracketsBalanced(expr));
         }
@@ -15,26 +13,21 @@ public class BalancedParenthesis {
 
     private static boolean areBracketsBalanced(String expr) {
         Stack<Character> stack = new Stack<>();
+        Map<Character, Character> map = new HashMap<>();
+        map.put('{', '}');
+        map.put('[', ']');
+        map.put('(', ')');
 
         // Traverse the expression
         for(int i = 0; i < expr.length(); i++){
             char x = expr.charAt(i);
             // Push opening braces into stack
-            if(x == '(' || x == '[' || x == '{'){
-                stack.push(x);
-            } else {
-                // If current character is not opening bracket,
-                // then it must be closing. So the stack cannot be empty at this point.
-                if(stack.isEmpty())
-                    return false;
-                if (x == ')' && stack.peek() == '(')
-                    stack.pop();
-                else if (x == ']' && stack.peek() == '[')
-                    stack.pop();
-                else if (x == '}' && stack.peek() == '{')
-                    stack.pop();
-                else
-                    break;
+            if(map.containsKey(x)){
+                stack.push(map.get(x));
+                continue;
+            }
+            if (stack.isEmpty() || stack.pop() != x){
+                return false;
             }
         }
         return stack.isEmpty();
