@@ -1,4 +1,4 @@
-package com.dsalgo.simple.programs;
+package com.dsalgo.maths;
 
 import java.util.Scanner;
 
