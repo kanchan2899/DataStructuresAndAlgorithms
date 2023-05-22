@@ -1,4 +1,4 @@
-package com.dsalgo.maths;
+package com.dsalgo.recursion.numbers;
 
 public class GCD_LCM {
     public static void main(String[] args) {
