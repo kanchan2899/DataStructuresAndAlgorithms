@@ -6,6 +6,25 @@ public class PowerOf2OrNot {
         int n = 31;
         System.out.println(isPowerOf2(n));
         System.out.println(isPowerOf2_1(n));
+        System.out.println(isPowerOf2_2(n));
+    }
+
+
+    /**
+     * Using log: Take the log of the number on base 2, if you get an integer then, the number is
+     * the power of 2.
+     *
+     * TC: O(log n)
+     * SC: O(1)
+     *
+     * @param n
+     * @return
+     */
+    private static boolean isPowerOf2_2(int n) {
+        if(n == 0)
+            return false;
+        double v = Math.log(n) / Math.log(2);
+        return (Math.ceil(v) == Math.floor(v));
     }
 
     /**
