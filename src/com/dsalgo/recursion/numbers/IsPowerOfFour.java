@@ -1,6 +1,6 @@
 package com.dsalgo.recursion.numbers;
 
-public class PowerOfFour {
+public class IsPowerOfFour {
     public static void main(String[] args) {
         int[] x = {16, 5, 1};
         for(int n: x) {

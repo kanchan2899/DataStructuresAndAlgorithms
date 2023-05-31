@@ -1,7 +1,7 @@
 package com.dsalgo.recursion.numbers;
 
 // https://leetcode.com/problems/power-of-two/
-public class PowerOfTwo {
+public class IsPowerOfTwo {
     public static void main(String[] args) {
         int n = 64;
         System.out.println(isPowerOfTwo(n));

@@ -1,6 +1,6 @@
 package com.dsalgo.recursion.numbers;
 
-public class PowerOfThree {
+public class IsPowerOfThree {
 
     public static void main(String[] args) {
         int[] n = {27, 19, 81, 3};

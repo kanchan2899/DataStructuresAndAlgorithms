@@ -8,6 +8,12 @@ public class SumOfDigits {
         System.out.println(sum1(x));
     }
 
+    /**
+     * TC: O(d), where d is the numder of digits
+     * SC: O(d), where d is the numder of digits
+     * @param x
+     * @return
+     */
     private static int sum1(int x) {
         if(x <= 0) {
             return 0;
