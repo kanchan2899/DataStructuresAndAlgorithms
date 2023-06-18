@@ -8,6 +8,16 @@ public class CountingBits {
         int n = 5;
         System.out.println(Arrays.toString(countBits(n)));
         System.out.println(Arrays.toString(countBits1(n)));
+        System.out.println(countBits2(n));
+    }
+
+    private static int countBits2(int n) {
+        if(n == 0)
+            return 0;
+        int x = (int)(Math.log(n) / Math.log(2));
+        int mul = 1 << (x - 1);
+        return mul * x + (n - (1 << x) + 1) + countBits2(n - (1 << x));
+
     }
 
     private static int[] countBits1(int n) {

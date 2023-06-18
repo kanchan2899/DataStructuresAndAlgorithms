@@ -11,6 +11,29 @@ public class IsPrime {
         int n  = in.nextInt();
         System.out.println("Is number " + n + " prime using brute force algo? : " + bruteforce_isPrime(n));
         System.out.println("Is number " + n + " prime by checking numbers till sqrt(n) ? : " + improved_bruteforce_isPrime(n));
+        System.out.println("Is number " + n + " prime for large value of n ? : " + isPrime(n));
+    }
+
+    /**
+     * Optimized solution for large value of n: The idea is to check n % 2 == 0 and n % 3 == 0,
+     * then we can save many iterations for large numbers
+     *
+     * @param n
+     * @return
+     */
+    private static boolean isPrime(int n) {
+        if(n == 1)
+            return false;
+        if(n == 2 || n == 3)
+            return true;
+        if(n % 2 == 0 || n % 3 == 0)
+            return false;
+        for(int i = 5; i * i <= n; i = i + 6) {
+            if(n % i == 0 || n % (i + 2) == 0) {
+                return false;
+            }
+        }
+        return true;
     }
 
 
@@ -38,6 +61,7 @@ public class IsPrime {
     /**
      * Improved Brute-force algo: Check from number 2 till square root of num [sqrt(num)] if the module of number and num gives 0,
      * number is not prime. Otherwise, it is prime.
+     * The idea is divisors always appear in pairs, hence we need to check only one pair
      * Example: num = 36
      * 1 * 36 = 36
      * 2 * 18 = 36
