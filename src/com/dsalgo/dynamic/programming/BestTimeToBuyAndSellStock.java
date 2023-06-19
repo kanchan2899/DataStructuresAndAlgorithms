@@ -7,21 +7,32 @@ public class BestTimeToBuyAndSellStock {
         int[][] prices = {{7,1,5,3,6,4}, {7,6,4,3,1}};
         for(int[] x: prices){
             System.out.println("Maximum profit for prices " + Arrays.toString(x) + " is " + maxProfit(x));
+            System.out.println("Maximum profit for prices " + Arrays.toString(x) + " is " + maxProfit1(x));
         }
     }
-    public static int maxProfit(int[] prices) {
-        /* Solution 1 - Brute Force - O(n * n)
+
+    /**
+     * Bruteforce: Start a loop i from 0 to n-1. Start a nested loop j from n-1 till j > i.
+     * Check if prices[j] - prices[i] > max, then max = prices[j] - prices[i]
+     * Return max
+     *
+     * TC: O(n^2)
+     * SC: O(1)
+     * @param prices
+     * @return
+     */
+    private static int maxProfit1(int[] prices) {
         int max = 0;
         for(int i = 0; i < prices.length; i++){
             for(int j = prices.length - 1; j > i; j--)
-            if(prices[j] - prices[i] > max){
-                max = prices[j] - prices[i];
-            }
+                if(prices[j] - prices[i] > max){
+                    max = prices[j] - prices[i];
+                }
         }
         return max;
-        */
+    }
 
-        // Solution 2 - Dynamic Programming
+    public static int maxProfit(int[] prices) {
         int minSoFar = prices[0];
         int maxProfit = 0;
         for(int i = 0; i < prices.length; i++){
