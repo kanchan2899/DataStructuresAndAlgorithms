@@ -3,7 +3,7 @@ package com.dsalgo.search.binary;
 public class FloorNumber {
     public static void main(String[] args) {
         int[] arr = {2, 3, 5, 9, 10, 14, 15, 18, 23};
-        int target = 1;
+        int target = 4;
         System.out.println(findFloorNumber(arr, target));
     }
 

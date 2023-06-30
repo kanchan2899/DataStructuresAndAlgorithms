@@ -6,7 +6,64 @@ public class ElementInInfiniteArray {
         int[] arr = {1, 2, 4, 5, 6, 7, 9, 10, 11, 13, 14, 15, 16};
         int target = 9;
         System.out.println(findingRange(arr, target));
+        System.out.println(searchInfiniteArray(arr, target));
+        System.out.println(searchInfiniteArray1(arr, target));
     }
+
+    /**
+     * Using binary search: Find the upper limit for the binary search by multiplying i by 2 in every
+     * pass. Do binary search from (i/2 + 1, to i - 1)
+     *
+     * TC: O(log of position)
+     * SC: O(1)
+     * @param arr
+     * @param target
+     * @return
+     */
+    private static int searchInfiniteArray1(int[] arr, int target) {
+        int i = 0;
+        if(arr[i] == target) {
+            return 0;
+        }
+        i++;
+
+        while (arr[i] < target) {
+            i = i * 2;
+            if(arr[i] == target) {
+                return i;
+            }
+        }
+        return binarySearch(arr, target, i/2 + 1, i - 1);
+    }
+
+
+    /**
+     * Linear Search: The idea is to start from the beginning and check if current element is target
+     * or it is greater than target. If greater than target, return -1. If arr[i] == target, return i
+     *
+     *
+     * TC: O(position)
+     * SC: O(1)
+     *
+     * @param arr
+     * @param target
+     * @return
+     */
+    static int searchInfiniteArray(int[] arr, int target) {
+        int i = 0;
+        while (true) {
+            if(arr[i] == target) {
+                return i;
+            }
+            if(arr[i] > target) {
+                return -1;
+            }
+            i++;
+        }
+    }
+
+
+
     static int findingRange(int[] arr, int target){
         // find the range
         // start with a box of size 2

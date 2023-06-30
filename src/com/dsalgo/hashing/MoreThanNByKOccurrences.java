@@ -97,6 +97,9 @@ public class MoreThanNByKOccurrences {
      *  5.      else { decrease all values in m by 1. If value becomes 0, remove it.}
      *  6. For all elements in m, print the elements that actually appear more than n/k times.
      *
+     *  TC: O(n)
+     *  SC: O(n)
+     *
      * @param arr
      * @param k
      * @return
