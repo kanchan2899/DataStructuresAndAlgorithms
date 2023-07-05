@@ -2,9 +2,7 @@ package com.dsalgo.hashing;
 
 // https://practice.geeksforgeeks.org/problems/union-of-two-arrays3538/1
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashSet;
+import java.util.*;
 
 /*  a[] = {15, 20, 5, 15}
     b[] = {15, 15, 20, 15, 20, 10}
@@ -17,6 +15,7 @@ public class UnionOfUnsortedArrays {
 
         System.out.println("Using Bruteforce: " + unionOfArrays1(a, b));
         System.out.println("Using HashSet: " + unionOfArrays2(a, b));
+        System.out.println("Using HashMap: " + unionOfArrays3(a, b));
     }
 
 
@@ -79,4 +78,33 @@ public class UnionOfUnsortedArrays {
         }
         return new ArrayList<>(unionSet);
     }
+
+    /**
+     * Using map: if we insert any key appearing more than one time it gets stored only once.
+     * The idea is to insert both the arrays in one common map which would then store the distinct
+     * elements of both arrays (union of both the array).
+     *
+     *
+     * @param a
+     * @param b
+     * @return
+     */
+    private static ArrayList<Integer> unionOfArrays3(int[] a, int[] b) {
+        ArrayList<Integer> union = new ArrayList<>();
+        Map<Integer, Integer> map = new HashMap<>();
+
+        for(int i = 0; i < a.length; i++) {
+            map.put(a[i], i);
+        }
+
+        for(int i = 0; i < b.length; i++) {
+            map.put(b[i], i);
+        }
+
+        for(Map.Entry entry: map.entrySet()) {
+            union.add((Integer) entry.getKey());
+        }
+        return union;
+    }
+
 }

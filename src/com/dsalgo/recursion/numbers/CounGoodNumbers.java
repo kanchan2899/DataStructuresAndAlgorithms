@@ -8,7 +8,7 @@ public class CounGoodNumbers {
     }
 
     /**
-     * Here the patter is 5454545454...
+     * Here the pattern is 5454545454...
      * Number of 4's = No. of odd positions = n / 2
      * Number of 5's = No. of even positions = n + 1 / 2 = n / 2 + n % 2
      * answer = power(4, # of 4's) * power(5, # of 5's)
