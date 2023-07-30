@@ -6,8 +6,8 @@ import java.util.Arrays;
 public class KthSmallestElement {
 
     public static void main(String[] args) {
-        int[] arr = {6, 3, 8, 9, 1, 4};
-        int k = 1;
+        int[] arr = {3, 5, 4, 2, 9};
+        int k = 3;
 
         System.out.println(kthSmallestElement(arr, k));
         System.out.println(kthSmallestElement1(arr, k));
