@@ -79,6 +79,28 @@ public class BinarySearchInSorted2DArray {
         }
     }
 
+    /**
+     * Efficient solution: The simple idea is to remove a row or column in each comparison until an element is found.
+     * Begin from the top right or bottom left corner.
+     * If the element is same, return the index
+     * If the element is greater than target, then decrement column. Else, increment row.
+     *
+     * Algorithm:
+     * 1. Let the given element be x, create two variable i = 0, j = n-1 as index of row and column
+     * 2. Run a loop until i = n
+     * 3. Check if the current element is greater than x then decrease the count of j.
+     * Exclude the current column.
+     * 4. Check if the current element is less than x then increase the count of i.
+     * Exclude the current row.
+     * 5. If the element is equal, then print the position and end.
+     *
+     * TC: O(m + n)
+     * SC: O(1)
+     *
+     * @param arr
+     * @param target
+     * @return
+     */
     static boolean searchIn2DMatrixSortedInAscendingOrderRowColwise(int[][] arr, int target){
         int row = 0;
         int col = arr[0].length - 1;
