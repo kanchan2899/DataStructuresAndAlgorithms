@@ -9,6 +9,26 @@ public class MergeSort {
         System.out.println(Arrays.toString(arr));
     }
 
+    /**
+     * Merge sort: is a Divide and Conquer algorithm. It divides the input array in two halves,
+     * calls itself for the two halves and then merges the two sorted halves. The merge() function
+     * is used for merging two halves. The merge(arr, l, m, r) is key process that assumes that
+     * arr[l..m] and arr[m+1..r] are sorted and merges the two sorted sub-arrays into one in a
+     * sorted manner.
+     *
+     * - Divide and conquer algo -> divide/conquer/merge
+     * - Stable algo
+     * - In-place algo
+     * - TC: O(n * log n) in all cases
+     * - SC: O(n) for temp array and O(log n) stack space
+     * - Well suited for linked lists with O(1) space
+     * - Used in external sorting
+     * - For arrays, in general, quick sort outperforms merge sort
+     *
+     * @param arr
+     * @param start
+     * @param end
+     */
     private static void mergeSort(int[] arr, int start, int end) {
         if(end - start == 1)
             return;

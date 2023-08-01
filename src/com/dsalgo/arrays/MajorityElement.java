@@ -20,8 +20,34 @@ public class MajorityElement {
         for(int[] a : arr) {
             System.out.println("Using Boyer-Moore Majority Element: " + majorityElement1(a));
             System.out.println("Using HashMap: " + majorityElement2(a));
+            System.out.println("Using Bruteforce: " + majorityElement3(a));
             System.out.println("**********************");
         }
+    }
+
+    /**
+     * Using Bruteforce: Traverse all elements with loop i from 0 to n-1. Initialize count to 0
+     * Start an inner loop j from i+1 to n-1 to find if a[j] == a[i]. If so, increment count.
+     * If count is greater than n/2, return the index of the element i.
+     *
+     * TC: O(n^2)
+     * SC: O(1)
+     * @param a
+     * @return
+     */
+    private static int majorityElement3(int[] a) {
+        for(int i = 0; i < a.length; i++) {
+            int count = 1;
+            for(int j = i + 1; j < a.length; j++) {
+                if(a[i] == a[j]) {
+                    count++;
+                }
+            }
+            if(count > a.length / 2) {
+                return a[i];
+            }
+        }
+        return -1;
     }
 
     /**
@@ -103,6 +129,16 @@ public class MajorityElement {
         return -1;
     }
 
+    /**
+     * Using Hashmap: Create a frequency map for all array elements. Traverse through the map and
+     * check if the frequency of any element is greater than n/2. If so, return the index of element.
+     *
+     * TC: O(n)
+     * SC: O(n)
+     *
+     * @param a
+     * @return
+     */
     private static int majorityElement2(int[] a) {
         HashMap<Integer, Integer> frequencyMap = new HashMap<>();
         for(int i : a) {
@@ -115,4 +151,6 @@ public class MajorityElement {
         }
         return -1;
     }
+
+
 }

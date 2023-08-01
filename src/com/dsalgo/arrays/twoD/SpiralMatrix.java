@@ -1,4 +1,4 @@
-package com.dsalgo.arrays;
+package com.dsalgo.arrays.twoD;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,6 +15,22 @@ public class SpiralMatrix {
         System.out.println(spiralOrder(arr2));
         System.out.println(spiralOrder(arr3));
     }
+
+    /**
+     *
+     * Bruteforce: Follow 4 steps until you traverse all elements
+     *
+     * 1. First print top first row from startCol = 0 to endCol (n) - 1. Then increment startRow by 1.
+     * 2. Then print last column from startRow to endRow (n) - 1. Decrement endCol.
+     * 3. Then print from endCol to startCol = 0. Decrement endRow
+     * 4. Then print from endRow to startRow. Increment startCol
+     *
+     * TC: O(n * m)
+     * SC: O(1)
+     *
+     * @param arr
+     * @return
+     */
     public static List<Integer> spiralOrder(int[][] arr) {
         List<Integer> list = new ArrayList<>(arr.length * arr[0].length);
         int endRow = arr.length - 1;

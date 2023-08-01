@@ -127,6 +127,8 @@ public class SumOfThreeValues {
      * If so, add triplets to the list, do start++ and end++ to search more triplets.
      * If sum of triplets > 0, do end--, else do start++
      *
+     * TC: O(n * log n)
+     *
      * @param nums
      * @return list of all triplets with sum 0
      */
