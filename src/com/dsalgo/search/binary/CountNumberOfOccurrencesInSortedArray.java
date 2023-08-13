@@ -29,7 +29,7 @@ public class CountNumberOfOccurrencesInSortedArray {
      * @param x
      * @return
      */
-    private static int countOccurrences2(int[] arr, int x) {
+    public static int countOccurrences2(int[] arr, int x) {
         int n = arr.length;
         int i = firstOccurrence(arr, 0, n-1, x);
         int j = lastOccurrence(arr, 0, n-1, x);

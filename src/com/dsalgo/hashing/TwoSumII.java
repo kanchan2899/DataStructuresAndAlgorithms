@@ -2,6 +2,7 @@ package com.dsalgo.hashing;
 
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
 
 // https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/
