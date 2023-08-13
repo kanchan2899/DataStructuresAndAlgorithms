@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 
+// https://www.geeksforgeeks.org/find-subarray-with-given-sum/
 public class SubarrayWithGivenSum {
     public static void main(String[] args) {
         int[][] arr = {{5, 8, 6, 13, 3, -1}, {15, 2, 8, 10, -5, -8, 6}, {3, 2, 5, 6}, {3, 2, 1}};
