@@ -1,4 +1,4 @@
-package com.dsalgo.strings;
+package com.dsalgo.strings.pattern;
 
 // https://practice.geeksforgeeks.org/problems/pattern-searching5231/1
 public class PatternSearching {
@@ -7,6 +7,28 @@ public class PatternSearching {
         String pattern = "ababcaf";
         System.out.println(searchPattern(str, pattern));
         System.out.println(searchPattern1(str, pattern));
+        System.out.println(searchPattern2(str, pattern));
+    }
+
+    private static boolean searchPattern2(String txt, String pat) {
+        int i = 0;
+        while(i <= (txt.length() - pat.length())) {
+            int j = 0;
+            int k = i;
+
+            String s = "";
+
+            while(j < pat.length() && txt.charAt(k) == pat.charAt(j)) {
+                s = s + txt.charAt(k);
+                if(s.length() == pat.length()) {
+                    return true;
+                }
+                j++;
+                k++;
+            }
+            i++;
+        }
+        return false;
     }
 
     /**
@@ -67,7 +89,7 @@ public class PatternSearching {
     public static boolean searchPattern1(String str, String pat) {
         int n = str.length() - pat.length() - 1;
         int m = pat.length();
-        for(int i = 0; i < n; i++) {
+        for(int i = 0; i <= n - m; i++) {
             for(int j = 0; j < m; j++) {
                 if(str.charAt(j+i) != pat.charAt(j)) {
                     break;
