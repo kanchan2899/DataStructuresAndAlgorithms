@@ -11,8 +11,15 @@ public class BalancedParenthesis {
         }
     }
 
+    /**
+     * Using stacks
+     * TC: O(n)
+     * SC: O(n)
+     * @param expr
+     * @return
+     */
     private static boolean areBracketsBalanced(String expr) {
-        Stack<Character> stack = new Stack<>();
+        ArrayDeque<Character> stack = new ArrayDeque<>();
         Map<Character, Character> map = new HashMap<>();
         map.put('{', '}');
         map.put('[', ']');
