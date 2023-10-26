@@ -2,12 +2,14 @@ package com.dsalgo.sort.cycle;
 
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
 
 // https://www.geeksforgeeks.org/minimum-number-swaps-required-sort-array/
 public class CountMinimumNumberOfSwaps {
     public static void main(String[] args) {
         int[] arr = {4, 3, 2, 1, 5, 7, 6};
-        System.out.println(minimumSwaps(arr, arr.length));
+        System.out.println(minimumSwaps1(arr, arr.length));
     }
 
     /**
@@ -35,5 +37,46 @@ public class CountMinimumNumberOfSwaps {
      */
     private static int minimumSwaps(int[] arr, int n) {
         return 0;
+    }
+
+
+    private static int minimumSwaps1(int[] arr, int n) {
+        int swaps = 0;
+
+        int[] temp = Arrays.copyOfRange(arr, 0, n);
+
+        // hashmap which stores the indexes of the input array
+        HashMap<Integer, Integer> map = new HashMap<>();
+
+        Arrays.sort(temp);
+
+        for(int i = 0; i < n; i++) {
+            map.put(arr[i], i);
+        }
+
+        for(int i = 0; i < n; i++) {
+
+            // this is checking whether the current element is at the right place or not
+            if(arr[i] != temp[i]) {
+                swaps++;
+                int init = arr[i];
+
+                // if not, swap this element with the index of the element which should come here
+                swap(arr, i, map.get(temp[i]));
+
+                // update the indexes in the hashmap accordingly
+                map.put(init, map.get(temp[i]));
+                map.put(temp[i], i);
+            }
+        }
+
+        return swaps;
+    }
+
+    public static void swap(int[] arr, int i, int j)
+    {
+        int temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
     }
 }
