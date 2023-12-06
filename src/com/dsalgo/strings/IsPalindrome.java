@@ -8,7 +8,7 @@ public class IsPalindrome {
         }
     }
 
-    private static boolean isPalindrome(String s) {
+    public static boolean isPalindrome(String s) {
         if(s == "" || s == null){
             return true;
         }
