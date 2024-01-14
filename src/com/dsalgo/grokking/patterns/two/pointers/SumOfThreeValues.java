@@ -153,7 +153,9 @@ public class SumOfThreeValues {
     }
 
     /**
-     * Using hashing: Start a loop i from 0 to nums.length - 2.
+     * Using hashing:
+     *
+     * Start a loop i from 0 to nums.length - 2.
      * Initialize the hashset and current_sum = sum - nums[i]
      * Start another loop j from i + 1 to nums.length. If set contains current_sum - nums[j], return true
      * Otherwise, add nums[j] to the set. If no triplets found, return false
