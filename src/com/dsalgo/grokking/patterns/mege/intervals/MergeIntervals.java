@@ -8,9 +8,7 @@ package com.dsalgo.grokking.patterns.mege.intervals;
  * the first.
  */
 
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.Stack;
+import java.util.*;
 
 class Interval {
     int start;
